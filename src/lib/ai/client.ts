@@ -77,7 +77,7 @@ export async function callAI<TRequest, TResult>(
       headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: JSON.stringify(payload),
-      signal: options?.signal,
+      ...(options?.signal ? { signal: options.signal } : {}),
     });
   } catch {
     throw new AIError({

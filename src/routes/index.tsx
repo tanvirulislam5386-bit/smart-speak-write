@@ -622,7 +622,6 @@ function Index() {
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-3xl font-semibold tracking-tight">AI Practice Studio</h1>
             <Badge variant="secondary">
-              {AI_CONFIG.source === undefined ? "" : ""}
               {AI_CONFIG.useMocks ? "Sample results" : "Live results"}
             </Badge>
           </div>

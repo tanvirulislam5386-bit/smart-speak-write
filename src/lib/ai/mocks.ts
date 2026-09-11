@@ -251,7 +251,7 @@ export function mockStudyPlan(req: StudyPlanRequest): StudyPlan {
       goal: t.goal,
       days: Array.from({ length: 6 }, (_, di) => ({
         day: di + 1,
-        label: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][di],
+        label: (["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][di] ?? `Day ${di + 1}`),
         tasks: [
           {
             id: id(`sp-${wi + 1}-${di + 1}`, 1),
@@ -400,7 +400,7 @@ export function mockGrammarExercises(req: GrammarExerciseRequest): GrammarExerci
       id: id("gq", i + 1),
       format,
       prompt: s.prompt,
-      options: format === "multipleChoice" ? s.options : undefined,
+      ...(format === "multipleChoice" ? { options: s.options } : {}),
       answer: s.answer,
       explanation: s.explanation,
     })),
